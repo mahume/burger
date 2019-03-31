@@ -25,7 +25,7 @@ function objectToSQL(object) {
 const orm = {
     all: function(tableInput, cb) {
         let queryString = `SELECT * FROM ${tableInput};`
-        connection.query(queryString, (err, res) => {
+        connection.connection.query(queryString, (err, res) => {
             if (err) {
                 throw err
             }
@@ -43,7 +43,7 @@ const orm = {
         
         console.log(queryString)
 
-        connection.query(queryString, vals, (err, res) => {
+        connection.connection.query(queryString, vals, (err, res) => {
             if (err) {
                 throw err
             }
@@ -59,7 +59,7 @@ const orm = {
 
         console.log(queryString)
 
-        connection.query(queryString, (err, res) => {
+        connection.connection.query(queryString, (err, res) => {
             if (err) {
                 throw err
             }
@@ -71,7 +71,7 @@ const orm = {
         queryString += " WHERE "
         queryString += condition
         
-        connection.query(queryString, (err, res) => {
+        connection.connection.query(queryString, (err, res) => {
             if (err) {
                 throw err
             }
