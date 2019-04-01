@@ -1,11 +1,10 @@
-$(document).ready(() => {
-    $('.change-devoured').on('click', event => {
-        let id = $(this).data('id')
-        console.log(id)
+$(() => {
+    $('.change-devoured').on('click', function(event) {
+        let id = $(this).data("id")
         let newDevoured = $(this).data('devoured')
-        console.log(newDevoured)
+
         let newDevouredState = {
-            devoured: newDevoured
+            devoured: true
         }
         $.ajax(`/api/burgers/${id}`, {
             type: 'PUT',
@@ -16,11 +15,11 @@ $(document).ready(() => {
             location.reload()
         })
     })
-    $('.create-form').on('submit', event => {
+    $('.create-form').on('submit', function(event) {
         event.preventDefault()
         let newBurger = {
             burger_name: $('#burger').val().trim(),
-            devoured: 'false'
+            devoured: 0
         }
         $.ajax('/api/burgers', {
             type: 'POST',
@@ -31,7 +30,7 @@ $(document).ready(() => {
             location.reload()
         })
     })
-    $('.delete-burger').on('click', event => {
+    $('.delete-burger').on('click', function(event) {
         let id = $(this).data("id")
         $.ajax(`/api/burgers/${id}`, {
             type: 'DELETE'
