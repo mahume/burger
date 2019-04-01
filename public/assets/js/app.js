@@ -1,7 +1,9 @@
 $(document).ready(() => {
     $('.change-devoured').on('click', event => {
         let id = $(this).data('id')
-        let newDevoured = $(this).data('new-devoured')
+        console.log(id)
+        let newDevoured = $(this).data('devoured')
+        console.log(newDevoured)
         let newDevouredState = {
             devoured: newDevoured
         }
@@ -18,7 +20,7 @@ $(document).ready(() => {
         event.preventDefault()
         let newBurger = {
             burger_name: $('#burger').val().trim(),
-            devoured: $('[burger_name=devoured]:checked').val().trim()
+            devoured: 'false'
         }
         $.ajax('/api/burgers', {
             type: 'POST',
@@ -30,7 +32,7 @@ $(document).ready(() => {
         })
     })
     $('.delete-burger').on('click', event => {
-        let id = $(this).data('id')
+        let id = $(this).data("id")
         $.ajax(`/api/burgers/${id}`, {
             type: 'DELETE'
         })
